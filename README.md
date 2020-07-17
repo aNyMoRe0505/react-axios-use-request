@@ -72,7 +72,7 @@ function App () {
 | dataUpdater | function | (currentData, responseData) => responseData | | Merges the current data with the response data |
 | initialData | any | null | | Set a default value for data |
 | onAbort | function | empty function | | Runs when the request is aborted |
-| axiosInstance | axios | original axios instance | | [You can create your own axios instance](https://github.com/axios/axios#creating-an-instance) |
+| axiosInstance | function | original axios instance | | [You can create your own axios instance](https://github.com/axios/axios#creating-an-instance) |
 
 ### Notice
 It is recommended that your `options` object should be outside of component, remain same reference.
@@ -108,7 +108,7 @@ const options = useMemo(() => ({
 }), []);
 ```
 
-## Supported APIS
+## Supported API
 | name | description |
 | -- | -- |
 | loading | loading status |

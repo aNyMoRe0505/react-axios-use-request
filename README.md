@@ -1,4 +1,4 @@
-# react-axios-use-request
+# react-axios-use-request [not yet been published]
 React hook for managing http requests with axios
 
 ## Installation

@@ -20,6 +20,10 @@ const getPostComments = (postId) => ({
 
 const options = {
   getRequestPayload: getPostComments,
+  cachePolicy: 'no-cache',
+  dataUpdater: (currentData, responseData) => responseData,
+  initialData: null,
+  onAbort: () => {},
 };
 
 function App () {

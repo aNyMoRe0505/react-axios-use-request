@@ -156,7 +156,7 @@ const options = useMemo(() => ({
 doRequest().then((r) => do something after success).catch((e) => do something when error)
 ```
 
-`doRequest`、`reset`、`abort` These functions identity are stable and won’t change on re-renders.
+`doRequest`、`reset`、`abort`、`updateData` These functions identity are stable and won’t change on re-renders.
 So you can safe to include or omit from the useEffect dependency list
 ```js
 useEffect(() => {

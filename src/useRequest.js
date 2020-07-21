@@ -59,6 +59,12 @@ const getReducer = (dataUpdater, initialState) => (state, action) => {
     case 'reset':
       return initialState;
 
+    case 'updateData':
+      return {
+        ...state,
+        data: action.newData,
+      };
+
     default:
       throw new Error('Unrecognized action type');
   }
@@ -209,11 +215,16 @@ const useRequest = (
     }
   }, []);
 
+  const updateData = useCallback((newData) => {
+    dispatch({ type: 'updateData', newData });
+  }, []);
+
   return {
     ...state,
     doRequest,
     reset,
     abort,
+    updateData,
   };
 };
 

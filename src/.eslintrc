@@ -1,0 +1,21 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": [
+  ],
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    "max-len": [0]
+  }
+}

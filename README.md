@@ -18,12 +18,25 @@ const getPostComments = (postId) => ({
   url: `https://jsonplaceholder.typicode.com/posts/${postId}/comments`,
 });
 
-const options = {
+const createPost = () => ({
+  method: 'post',
+  url: 'https://jsonplaceholder.typicode.com/posts',
+  data: {
+    title: 'foo',
+    body: 'bar',
+    userId: 1,
+  },
+});
+
+const getPostOptions = {
   getRequestPayload: getPostComments,
   cachePolicy: 'no-cache',
   dataUpdater: (currentData, responseData) => responseData,
   initialData: null,
   onAbort: () => {},
+};
+const createPostOptions = {
+  getRequestPayload: createPost,
 };
 
 function App () {
@@ -34,7 +47,12 @@ function App () {
     doRequest,
     reset,
     abort,
-  } = useRequest(options);
+    updateData: updatePosts,
+  } = useRequest(getPostOptions);
+
+  const {
+    doRequest: apiCreatePost,
+  } = useRequest(createPostOptions);
   
   if (loading) return ...
 
@@ -53,6 +71,19 @@ function App () {
         }}
       >
         fetching
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          apiCreatePost().then((response) => {
+            updatePosts([
+              response.data,
+              ...posts,
+            ]);
+          });
+        }}
+      >
+        create
       </button>
       <button type="button" onClick={abort}>
         abort
@@ -117,6 +148,7 @@ const options = useMemo(() => ({
 | doRequest | function that trigger request |
 | reset | function that reset `data`, `loading`, `error` |
 | abort | function that can abort request |
+| updateData | function that you can update data |
 
 ### Notice
 `doRequest` will return Promise in the end, so if you want to do something after request success..

@@ -31,7 +31,7 @@ const createPost = () => ({
 const getPostOptions = {
   getRequestPayload: getPostComments,
   cachePolicy: 'no-cache',
-  dataUpdater: (currentData, responseData) => [...responseData, currentData],
+  dataUpdater: (currentData, responseData) => [...responseData, ...currentData],
   initialData: [],
   onAbort: () => {},
 };

@@ -78,7 +78,7 @@ function App () {
           apiCreatePost().then((response) => {
             updatePosts([
               response.data,
-              ...posts,
+              ...data,
             ]);
           });
         }}

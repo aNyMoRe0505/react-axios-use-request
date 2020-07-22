@@ -35,13 +35,14 @@ const getPostOptions = {
   initialData: [],
   onAbort: () => {},
 };
+
 const createPostOptions = {
   getRequestPayload: createPost,
 };
 
 function App () {
   const {
-    loading,
+    loading: postLoading,
     error,
     data,
     doRequest,
@@ -51,10 +52,11 @@ function App () {
   } = useRequest(getPostOptions);
 
   const {
+    loading: createPostLoading,
     doRequest: apiCreatePost,
   } = useRequest(createPostOptions);
   
-  if (loading) return ...
+  if (postLoading) return ...
 
   if (error) return ...
   
@@ -74,6 +76,7 @@ function App () {
       </button>
       <button
         type="button"
+        disabled={createPostLoading}
         onClick={() => {
           apiCreatePost().then((response) => {
             updatePosts([

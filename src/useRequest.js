@@ -120,6 +120,7 @@ const useRequest = (
     optionsRef.current = options;
   }, [options]);
 
+  // 這邊可能會有點問題，只會執行一次，optionRef.current 只會是第一次帶進來時的值
   const initialState = useMemo(() => getInitialState(optionsRef.current.initialData), []);
   const reducer = useMemo(() => getReducer(optionsRef.current.dataUpdater, initialState), [initialState]);
 
